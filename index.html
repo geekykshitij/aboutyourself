@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Personalized Greetings</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+
+        
+        .container {
+            background-color: white;
+            border-radius: 15px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+            padding: 40px;
+            width: 400px;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+        
+        h1 {
+            color: #333;
+            margin-bottom: 30px;
+            font-size: 28px;
+        }
+        
+        .input-group {
+            margin-bottom: 25px;
+            text-align: left;
+        }
+        
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: #555;
+        }
+        
+        input[type="text"] {
+            width: 100%;
+            padding: 12px 15px;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            font-size: 16px;
+            transition: border-color 0.3s;
+        }
+        
+        input[type="text"]:focus {
+            border-color: #6c63ff;
+            outline: none;
+        }
+        
+        button {
+            background-color: #6c63ff;
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: 600;
+            transition: all 0.3s;
+            width: 100%;
+        }
+        
+        button:hover {
+            background-color: #5a52e0;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(108, 99, 255, 0.3);
+        }
+        
+        #message {
+            margin-top: 30px;
+            font-size: 18px;
+            min-height: 100px;
+            padding: 20px;
+            background-color: #f8f9fa;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            transition: all 0.3s;
+        }
+        
+        .special-message {
+            background-color: #fff8e6;
+            border-left: 5px solid #ffc107;
+            animation: pulse 2s infinite;
+        }
+        
+        .maalik-message {
+            background-color: #e6f7ff;
+            border-left: 5px solid #1890ff;
+            color: #003a8c;
+            font-weight: bold;
+            font-size: 20px;
+            animation: pulse-gold 1.5s infinite;
+        }
+        
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.02); }
+            100% { transform: scale(1); }
+        }
+        
+        @keyframes pulse-gold {
+            0% { transform: scale(1); box-shadow: 0 0 10px rgba(255, 215, 0, 0.5); }
+            50% { transform: scale(1.03); box-shadow: 0 0 20px rgba(255, 215, 0, 0.8); }
+            100% { transform: scale(1); box-shadow: 0 0 10px rgba(255, 215, 0, 0.5); }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Welcome to Kshitij's Creation</h1>
+        <div class="input-group">
+            <label for="name">Enter your name:</label>
+            <input type="text" id="name" placeholder="e.g. John Doe">
+        </div>
+        <button onclick="showGreeting()">Get Your Greeting</button>
+        <div id="message">Jaaniye apne baare me kuch chaar baatein .....</div>
+    </div>
+
+    <script>
+        function showGreeting() {
+            const name = document.getElementById('name').value.trim();
+            const messageDiv = document.getElementById('message');
+            
+            if (!name) {
+                messageDiv.textContent = "Please enter your name first!";
+                messageDiv.style.color = "#dc3545";
+                messageDiv.className = "";
+                return;
+            }
+            
+            // Special case for Kshitij Mishra
+            if (name.toLowerCase() === "kshitij mishra") {
+                messageDiv.innerHTML = "Maalik Kshitij Mishra!<br>Aapne mujhe banaya hai<br>Aap in sab ke baap hai! 👑";
+                messageDiv.style.color = "#003a8c";
+                messageDiv.className = "maalik-message";
+            } 
+
+
+        
+            else {
+                // Array of fun greetings for everyone else
+                const greetings = [
+                    `${name} bada hi madarchod aadmi hai!  ✨`,
+                    `${name} ke paas Lauda nahi hai! 🌌`,
+                    `${name} to yaar bada bhosdiwala hai! 💖`,
+                    `kis madarchod ka naam likh diya yaar 🎉`,
+                    `Betichod ${name} aap apna naam to naa hi likhe! 😊`,
+                    `Ek raaz ki baat suno, ${name} ke paas chut hai 😄`,
+                    `${name} pura ka pura lauda muh me le sakta hai 🥒`,
+                    
+                ];
+                
+                const randomGreeting = greetings[Math.floor(Math.random() * greetings.length)];
+                messageDiv.innerHTML = randomGreeting;
+                messageDiv.style.color = "#28a745";
+                messageDiv.className = "special-message";
+            }
+        }
+    </script>
+    
+</body>
+</html>
